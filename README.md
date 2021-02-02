@@ -5,7 +5,7 @@
 
 To run this project directory make sure you install all packages, and start:
 
-npm i
+npm i  
 npm start
 
 Runs the app in the development mode.

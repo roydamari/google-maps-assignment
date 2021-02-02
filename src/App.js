@@ -9,7 +9,7 @@ function App() {
 
   useEffect(() => {
     (async () => {
-      fetch(`https://api.ipdata.co/?api-key=6eb376b612921abf626b3eee19ff8dfc337c2b299f5fd8d3a13c8ef9`)
+      fetch(`https://api.ipdata.co/?api-key=dcb19aafdd3accd0ca61b014f91a6cc5888d57f4f703a9758da3751e`)
         .then(response => response.json())
         .then(data => {
           if (data.message) setError(data.message)

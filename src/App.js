@@ -7,11 +7,14 @@ function App() {
   const [error, setError] = useState('')
 
 
+
   useEffect(() => {
     (async () => {
-      fetch(`https://api.ipdata.co/?api-key=6eb376b612921abf626b3eee19ff8dfc337c2b299f5fd8d3a13c8ef9`)
+      //Send the IpData HTTP request on load
+      fetch(`https://api.ipdata.co/?api-key=${process.env.REACT_APP_IPDATA_API_KEY}`)
         .then(response => response.json())
         .then(data => {
+          //Check for errors and save it
           if (data.message) setError(data.message)
           else setIpDetails(data)
         }).catch(e => {
@@ -27,8 +30,8 @@ function App() {
         height="100%"
         title="maps"
         frameBorder="0" style={{ border: 0 }}
-        src={`https://www.google.com/maps/embed/v1/place?key=AIzaSyCdQymwSuF0P6Ee-ffX0ZtWjpJdpaT5eLk
-        &q=${ipDetails.country_name ? ipDetails.country_name : ''},${ipDetails.city ? ipDetails.city : ''}`} allowFullScreen>
+        src={`https://www.google.com/maps/embed/v1/place?key=${process.env.REACT_APP_GOOGLE_MAPS_API_KEY}&q=${ipDetails.country_name ? ipDetails.country_name : ''},${ipDetails.city ? ipDetails.city : ''}`}
+        allowFullScreen>
       </iframe>
       <div className='info'>
         {!error ? <>
